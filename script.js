@@ -235,3 +235,56 @@ timer2ResetBtn.addEventListener('click', resetTimer2);
   
 // Timer 3 logic
 // Implement the logic for Timer 
+// Timer 3 - Stopwatch
+const timer3Label = document.getElementById('timer3-label');
+const timer3Time = document.getElementById('timer3-time');
+const timer3StartBtn = document.getElementById('timer3-start');
+const timer3StopBtn = document.getElementById('timer3-stop');
+const timer3ResetBtn = document.getElementById('timer3-reset');
+
+let intervalTimer3;
+let startTime;
+let stopwatchInProgress = false;
+
+function startTimer3() {
+  timer3StartBtn.disabled = true;
+  timer3StopBtn.disabled = false;
+  timer3ResetBtn.disabled = true;
+  stopwatchInProgress = true;
+
+  startTime = new Date().getTime();
+  intervalTimer3 = setInterval(updateTimer3, 1000);
+}
+
+function stopTimer3() {
+  clearInterval(intervalTimer3);
+  timer3StartBtn.disabled = false;
+  timer3StopBtn.disabled = true;
+  timer3ResetBtn.disabled = false;
+  stopwatchInProgress = false;
+}
+
+function resetTimer3() {
+  clearInterval(intervalTimer3);
+  timer3Time.textContent = '0:00';
+  timer3Label.textContent = '';
+  timer3StartBtn.disabled = false;
+  timer3StopBtn.disabled = true;
+  timer3ResetBtn.disabled = true;
+  stopwatchInProgress = false;
+}
+
+function updateTimer3() {
+  const currentTime = new Date().getTime();
+  const elapsed = Math.floor((currentTime - startTime) / 1000);
+
+  const minutes = Math.floor(elapsed / 60);
+  const seconds = elapsed % 60;
+
+  const formattedTime = `${minutes}:${seconds.toString().padStart(2, '0')}`;
+  timer3Time.textContent = formattedTime;
+}
+
+timer3StartBtn.addEventListener('click', startTimer3);
+timer3StopBtn.addEventListener('click', stopTimer3);
+timer3ResetBtn.addEventListener('click', resetTimer3);
