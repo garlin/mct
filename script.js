@@ -76,3 +76,96 @@ let timer3Time = 0;
 // Function to show timer container and hide others
 function showTimer(timerContainerId) {
   const timerContainers = document.getElementsByClassName
+
+// Timer 1 logic
+// Implement the logic for Timer 1 using JavaScript
+// Timer 1 - Interval Timer
+const timer1Label = document.getElementById('timer1-label');
+const timer1Time = document.getElementById('timer1-time');
+const timer1StartBtn = document.getElementById('timer1-start');
+const timer1PauseBtn = document.getElementById('timer1-pause');
+const timer1ResetBtn = document.getElementById('timer1-reset');
+
+let intervalTimer;
+let round = 1;
+let exercise = 1;
+let roundInProgress = false;
+
+function startTimer1() {
+  timer1StartBtn.disabled = true;
+  timer1PauseBtn.disabled = false;
+  timer1ResetBtn.disabled = true;
+  roundInProgress = true;
+
+  countdown(10, () => {
+    countdown(50, () => {
+      timer1Label.textContent = `Round ${round}, Exercise ${exercise}, Rest`;
+      exercise++;
+      if (exercise > 4) {
+        exercise = 1;
+        round++;
+        if (round > 4) {
+          endTimer1();
+          return;
+        }
+      }
+      countdown(10, startTimer1);
+    });
+  });
+}
+
+function pauseTimer1() {
+  clearInterval(intervalTimer);
+  timer1StartBtn.disabled = false;
+  timer1PauseBtn.disabled = true;
+}
+
+function resetTimer1() {
+  clearInterval(intervalTimer);
+  timer1Time.textContent = '0:00';
+  timer1Label.textContent = '';
+  round = 1;
+  exercise = 1;
+  roundInProgress = false;
+  timer1StartBtn.disabled = false;
+  timer1PauseBtn.disabled = true;
+  timer1ResetBtn.disabled = true;
+}
+
+function endTimer1() {
+  clearInterval(intervalTimer);
+  timer1Time.textContent = '0:00';
+  timer1Label.textContent = 'End';
+  roundInProgress = false;
+  timer1StartBtn.disabled = false;
+  timer1PauseBtn.disabled = true;
+  timer1ResetBtn.disabled = false;
+}
+
+function countdown(duration, callback) {
+  let timer = duration, minutes, seconds;
+  intervalTimer = setInterval(() => {
+    minutes = parseInt(timer / 60, 10);
+    seconds = parseInt(timer % 60, 10);
+
+    minutes = minutes < 10 ? '0' + minutes : minutes;
+    seconds = seconds < 10 ? '0' + seconds : seconds;
+
+    timer1Time.textContent = minutes + ':' + seconds;
+
+    if (--timer < 0) {
+      clearInterval(intervalTimer);
+      callback();
+    }
+  }, 1000);
+}
+
+timer1StartBtn.addEventListener('click', startTimer1);
+timer1PauseBtn.addEventListener('click', pauseTimer1);
+timer1ResetBtn.addEventListener('click', resetTimer1);
+  
+// Timer 2 logic
+// Implement the logic for Timer 2 using JavaScript
+
+// Timer 3 logic
+// Implement the logic for Timer 
