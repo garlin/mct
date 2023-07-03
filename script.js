@@ -166,6 +166,72 @@ timer1ResetBtn.addEventListener('click', resetTimer1);
   
 // Timer 2 logic
 // Implement the logic for Timer 2 using JavaScript
+// Timer 2 - Interval Timer
+const timer2Label = document.getElementById('timer2-label');
+const timer2Time = document.getElementById('timer2-time');
+const timer2StartBtn = document.getElementById('timer2-start');
+const timer2PauseBtn = document.getElementById('timer2-pause');
+const timer2ResetBtn = document.getElementById('timer2-reset');
 
+let intervalTimer2;
+let exercise2 = 1;
+let set = 1;
+let intervalInProgress = false;
+
+function startTimer2() {
+  timer2StartBtn.disabled = true;
+  timer2PauseBtn.disabled = false;
+  timer2ResetBtn.disabled = true;
+  intervalInProgress = true;
+
+  countdown(10, () => {
+    countdown(20, () => {
+      timer2Label.textContent = `Exercise ${exercise2}, Set ${set}, Rest`;
+      set++;
+      if (set > 8) {
+        set = 1;
+        exercise2++;
+        if (exercise2 > 4) {
+          endTimer2();
+          return;
+        }
+      }
+      countdown(10, startTimer2);
+    });
+  });
+}
+
+function pauseTimer2() {
+  clearInterval(intervalTimer2);
+  timer2StartBtn.disabled = false;
+  timer2PauseBtn.disabled = true;
+}
+
+function resetTimer2() {
+  clearInterval(intervalTimer2);
+  timer2Time.textContent = '0:00';
+  timer2Label.textContent = '';
+  exercise2 = 1;
+  set = 1;
+  intervalInProgress = false;
+  timer2StartBtn.disabled = false;
+  timer2PauseBtn.disabled = true;
+  timer2ResetBtn.disabled = true;
+}
+
+function endTimer2() {
+  clearInterval(intervalTimer2);
+  timer2Time.textContent = '0:00';
+  timer2Label.textContent = 'End';
+  intervalInProgress = false;
+  timer2StartBtn.disabled = false;
+  timer2PauseBtn.disabled = true;
+  timer2ResetBtn.disabled = false;
+}
+
+timer2StartBtn.addEventListener('click', startTimer2);
+timer2PauseBtn.addEventListener('click', pauseTimer2);
+timer2ResetBtn.addEventListener('click', resetTimer2);
+  
 // Timer 3 logic
 // Implement the logic for Timer 
