@@ -1,0 +1,55 @@
+body {
+  background-color: white;
+  color: black;
+  font-family: Arial, sans-serif;
+  text-align: center;
+}
+
+.container {
+  margin-top: 20px;
+}
+
+h1 {
+  margin-top: 0;
+}
+
+#timer-buttons {
+  margin-bottom: 20px;
+}
+
+#timer-buttons button {
+  margin: 5px;
+  padding: 10px 20px;
+  font-size: 16px;
+  border-radius: 5px;
+}
+
+.timer-container {
+  display: none;
+}
+
+.timer {
+  margin-bottom: 10px;
+}
+
+.controls button {
+  margin-top: 5px;
+  margin-bottom: 5px;
+  padding: 10px 20px;
+  font-size: 16px;
+  border-radius: 5px;
+}
+
+#timer1-start {
+  background-color: green;
+  color: white;
+}
+
+#timer1-pause, #timer2-pause, #timer3-stop {
+  background-color: gray;
+  color: white;
+}
+
+#timer1-reset, #timer2-reset, #timer3-reset {
+  background-color: red;
+ 
