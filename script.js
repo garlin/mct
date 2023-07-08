@@ -4,7 +4,8 @@ const pauseButton = document.getElementById("pause");
 const resetButton = document.getElementById("reset");
 
 let timerInterval;
-let timerCount = 0;
+let minutes = 0;
+let seconds = 0;
 
 startButton.addEventListener("click", startTimer);
 pauseButton.addEventListener("click", pauseTimer);
@@ -20,13 +21,22 @@ function pauseTimer() {
 
 function resetTimer() {
   clearInterval(timerInterval);
-  timerCount = 0;
+  minutes = 0;
+  seconds = 0;
   updateTimer();
 }
 
 function updateTimer() {
-  timerCount++;
-  timerElement.innerText = padDigits(timerCount, 3);
+  seconds++;
+  if (seconds === 60) {
+    minutes++;
+    seconds = 0;
+  }
+  timerElement.innerText = formatTime(minutes, seconds);
+}
+
+function formatTime(minutes, seconds) {
+  return `${minutes}:${padDigits(seconds, 2)}`;
 }
 
 function padDigits(number, digits) {
