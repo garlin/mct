@@ -21,8 +21,28 @@ h1 {
   margin: 20px 0;
 }
 
+.buttons {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
 .buttons button {
   padding: 10px 20px;
   font-size: 16px;
   margin: 5px;
+}
+
+#start {
+  background-color: green;
+  color: white;
+}
+
+#pause {
+  background-color: yellow;
+}
+
+#reset {
+  background-color: red;
+  color: white;
 }
