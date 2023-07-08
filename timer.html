@@ -1,47 +1,19 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Interval Timer</title>
+  <title>Stopwatch Timer</title>
   <link rel="stylesheet" type="text/css" href="styles.css">
 </head>
 <body>
-  <h1>Interval Timer</h1>
-
-  <div id="timer1" class="timer">
-    <h2>Fifty-Ten</h2>
-    <div class="display">
-      <p id="timer1-label">Countdown</p>
-      <p id="timer1-time">10</p>
-    </div>
-    <div class="controls">
-      <button id="timer1-start">Start</button>
-      <button id="timer1-reset">Reset</button>
+  <div class="container">
+    <h1>Stopwatch Timer</h1>
+    <div id="timer">000</div>
+    <div class="buttons">
+      <button id="start">Start</button>
+      <button id="pause">Pause</button>
+      <button id="reset">Reset</button>
     </div>
   </div>
-
-  <div id="timer2" class="timer">
-    <h2>Tabata</h2>
-    <div class="display">
-      <p id="timer2-label">Countdown</p>
-      <p id="timer2-time">10</p>
-    </div>
-    <div class="controls">
-      <button id="timer2-start">Start</button>
-      <button id="timer2-reset">Reset</button>
-    </div>
-  </div>
-
-  <div id="timer3" class="timer">
-    <h2>Stopwatch</h2>
-    <div class="display">
-      <p id="timer3-label">00:00:00</p>
-    </div>
-    <div class="controls">
-      <button id="timer3-start">Start</button>
-      <button id="timer3-stop">Stop</button>
-    </div>
-  </div>
-
   <script src="script.js"></script>
 </body>
 </html>
